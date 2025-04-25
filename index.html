@@ -1,0 +1,2655 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StoneLab - Portfolio</title>
+    <style>
+        :root {
+            --background-color: #253D2C;
+            --header-background: rgba(37, 61, 44, 0.9);
+            --text-color: #CFFFDC;
+            --heading-color: #68BA7F;
+            --accent-color: #2E6F40;
+            --secondary-color: #68BA7F;
+            --card-background: rgba(37, 61, 44, 0.5);
+            --border-color: rgba(104, 186, 127, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            /* font-family: 'Inter', sans-serif; */
+            font-family: 'Sora','Figtree',sans-serif;
+            /* font-family:  'Playfair Display', serif; */
+            /* font-family:  'Figtree', sans-serif; */
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            transition: var(--transition);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        header {
+            width: 100%;
+            position: sticky;
+            top: 0;
+            backdrop-filter: blur(8px);
+            z-index: 100;
+            padding: 15px 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+            background-color: var(--header-background);
+            transition: var(--transition);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10px 10px 20px 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: #CFFFDC;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+        }
+
+        .gradient-text {
+        background-image: linear-gradient(135deg, #68BA7F, #2E6F40);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        display: inline-block;
+        transition: var(--transition);
+        }
+
+        body:not(.dark-theme) .gradient-text {
+        background-image: linear-gradient(135deg, #253D2C, #2E6F40);
+        }
+
+        .menu {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .menu a {
+            font-family:  'Figtree', sans-serif;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease, transform 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+            color: var(--text-color);
+            transition: var(--transition);
+        }
+
+        .menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #68BA7F;
+            transition: width 0.3s ease;
+        }
+
+        .menu a:hover::after {
+            width: 100%;
+        }
+
+        .menu a:hover {
+            color: #68BA7F;
+        }
+
+        .menu a.active {
+            color: #68BA7F;
+        }
+
+        .menu a.active::after {
+            width: 100%;
+        }
+
+        .hire-btn {
+            background-color: var(--accent-color);
+            color: #CFFFDC;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            transition: var(--transition);
+
+        }
+
+        .hire-btn:hover {
+            background-color: #68BA7F;
+            box-shadow: 0 4px 15px rgba(46, 111, 64, 0.4);
+            transform: translateY(-3px);
+        }
+
+        section {
+            padding: 80px 0;
+            min-height: 50vh;
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 80vh;
+            padding: 40px 0;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-img {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-img img {
+            width: 400px;
+            height: 400px;
+            border-radius: 15px;
+            object-fit: cover;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .hero-img img:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px #68BA7F;
+        }
+
+        .intro {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            font-family: 'Sora',sans-serif;
+        }
+
+        .title {
+            font-size: 4.0625rem;
+            background: linear-gradient(90deg, #2E6F40, #68BA7F);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: var(--heading-color);
+            transition: var(--transition);
+            margin-bottom: 20px;
+            line-height: 1.2;
+            font-weight: 700;
+            font-family: 'Sora',sans-serif;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #CFFFDC;
+            margin-bottom: 30px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .social-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .social-btn:hover {
+            background-color: rgba(153, 102, 255, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .social-btn i {
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: transparent;
+            color: #68BA7F;
+            border: 1px solid #68BA7F; 
+            padding: 20px 35px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .download-btn:hover {
+            background-color: rgba(46, 111, 64, 0.1);
+            box-shadow: 0 4px 15px rgba(46, 111, 64, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .stats {
+            margin-top: -15%;
+            display: flex;
+            justify-content: space-between;
+            text-align: center;
+            gap: 20px;
+        }
+
+        .stat-box {
+            flex: 1;
+            padding: 20px;
+            height: 140px !important;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .stat-number {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #2E6F40, #68BA7F);
+            color: #CFFFDC;
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+
+        .stat-text {
+            font-size: 1rem;
+            color: #fff;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--accent-color);
+            color: #CFFFDC;
+            box-shadow: 0 4px 20px rgba(46, 111, 64, 0.3);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 100;
+            transition: transform 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(30deg);
+        }
+
+        .background-gradient {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(46, 111, 64, 0.2), transparent 60%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Bubble animations */
+        .bubbles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(46, 111, 64, 0.1);
+            animation: float 8s infinite, pulse 3s infinite alternate;
+            backdrop-filter: blur(1px);
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100vh) scale(1);
+                opacity: 0;
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 10px 3px rgba(46, 111, 64, 0.1);
+            }
+
+            100% {
+                box-shadow: 0 0 20px 5px rgba(46, 111, 64, 0.3);
+            }
+        }
+
+        /* Sections */
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            text-align: center;
+            background: linear-gradient(90deg, #2E6F40, #68BA7F);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: #CFFFDC;
+        }
+
+        /* Placeholder sections */
+        .services-grid,
+        .works-grid,
+        .skills-grid,
+        .testimonials-grid,
+        .contact-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .placeholder-card {
+            height: 200px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #68BA7F;
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .placeholder-card:hover {
+            transform: translateY(-5px);
+            background:  0 10px 30px rgba(46, 111, 64, 0.2);
+        }
+
+        /* Services Section Styles */
+        .services-section {
+            margin-top: -14%;
+            padding: 80px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .services-container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .services-heading {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .services-title {
+            font-size: 2.5rem;
+             background: linear-gradient(90deg, #2E6F40, #68BA7F);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 15px;
+        }
+
+        .services-subtitle {
+            font-size: 1.1rem;
+            color: #CFFFDC;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Service Cards Styling */
+        .services-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+            background: rgba(37, 61, 44, 0.5);
+            border: 1px solid rgba(104, 186, 127, 0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            background: rgba(46, 111, 64, 0.2);
+            border-color: rgba(104, 186, 127, 0.3);
+            box-shadow:  0 10px 30px rgba(46, 111, 64, 0.2);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: linear-gradient(to bottom, #2E6F40, #68BA7F);
+            transition: height 0.5s ease;
+        }
+
+        .service-card:hover::before {
+            height: 100%;
+        }
+
+        .service-number {
+            font-size: 3rem;
+            font-weight: 800;
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            opacity: 0.1;
+            color: #68BA7F;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-number {
+            opacity: 0.2;
+            transform: scale(1.2);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(153, 102, 255, 0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            background: 0 10px 30px rgba(46, 111, 64, 0.2);
+            transform: rotate(10deg);
+        }
+
+        .service-icon i {
+            font-size: 1.8rem;
+            color: #68BA7F;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .service-description {
+            color: #a0a0a0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .service-arrow {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #68BA7F;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: auto;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-arrow {
+            transform: translateX(5px);
+        }
+
+        /* Services layout design */
+        .services-showcase {
+            margin-top: 80px;
+        }
+
+        .service-item {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .service-item:hover {
+            background: rgba(153, 102, 255, 0.05);
+            border-color: rgba(102, 255, 184, 0.2);
+        }
+
+        .service-item-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 30px;
+        }
+
+        .service-item-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .service-item-number {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #68BA7F;
+            min-width: 40px;
+        }
+
+        .service-item-content h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #ffffff;
+        }
+
+        .service-item-content p {
+            color: #d0d0d0;
+            font-size: 1rem;
+            max-width: 500px;
+        }
+
+        .service-item-arrow {
+            width: 40px;
+            height: 40px;
+            background: #cee4d4;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .service-item:hover .service-item-arrow {
+            background: rgba(153, 102, 255, 0.3);
+            transform: translateX(5px);
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .services-list {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+            
+            .service-item-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .service-item-content h3 {
+                font-size: 1.5rem;
+            }
+            
+            .service-item-arrow {
+                align-self: flex-end;
+                margin-top: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .services-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .service-item-left {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .service-title {
+                font-size: 1.3rem;
+            }
+        }
+
+        /* works section styles */
+        .works-section {
+            padding: 80px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .works-container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .works-heading {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .works-title {
+            font-size: 2.5rem;
+             background: linear-gradient(90deg, #2E6F40, #68BA7F);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 15px;
+        }
+
+        .works-subtitle {
+            font-size: 1.1rem;
+            color: #CFFFDC;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .works-filter {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+
+        .filter-btn {
+            background-color: rgba(15, 15, 26, 0.7);
+            color: #ffffff;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active {
+            background-color: #2E6F40;
+            color: #CFFFDC;
+        }
+
+        .filter-btn:hover:not(.active) {
+            background-color: rgba(46, 111, 64, 0.2);
+        }
+
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .work-card {
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            background: rgba(37, 61, 44, 0.5);
+            border: 1px solid rgba(104, 186, 127, 0.1);
+            transition: all 0.4s ease;
+            height: 450px;
+        }
+
+        .work-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(46, 111, 64, 0.2);
+        }
+
+        .work-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.4s ease;
+        }
+
+        .work-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: linear-gradient(to top, rgba(37, 61, 44, 0.9) 0%, rgba(37, 61, 44, 0.7) 50%, rgba(37, 61, 44, 0) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .work-card:hover .work-overlay {
+            height: 100%;
+            opacity: 1;
+        }
+
+        .work-category {
+            font-size: 0.85rem;
+            color: #68BA7F;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 10px;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.4s ease 0.1s;
+        }
+
+        .work-title {
+            font-size: 1.5rem;
+            color: #ffffff;
+            margin-bottom: 15px;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.4s ease 0.2s;
+        }
+
+        .work-description {
+            color: #d0d0d0;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.4s ease 0.3s;
+        }
+
+        .work-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #68BA7F;
+            font-weight: 600;
+            text-decoration: none;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.4s ease 0.4s;
+        }
+
+        .work-card:hover .work-category,
+        .work-card:hover .work-title,
+        .work-card:hover .work-description,
+        .work-card:hover .work-link {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .works-grid {
+            position: relative;
+            transition: height 0.4s ease;
+        }
+
+        .work-card {
+            transition: opacity 0.3s ease, transform 0.3s ease, display 0.3s ease;
+        }
+
+        .filtering .work-card {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        /* Add animation for cards appearing/disappearing */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .works-grid::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        @media (max-width: 768px) {
+            .works-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+            
+            .work-card {
+                height: 350px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .works-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .works-filter {
+                flex-wrap: wrap;
+            }
+        }
+
+        /* Skills sections */
+        .skills-section {
+            padding: 80px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .skills-container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .skills-heading {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .skills-title {
+            font-size: 2.5rem;
+            background: linear-gradient(90deg, #2E6F40, #68BA7F);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 15px;
+        }
+
+        .skills-subtitle {
+            font-size: 1.1rem;
+            color: #CFFFDC;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .skill-card {
+            background: rgba(37, 61, 44, 0.5);
+            border: 1px solid rgba(104, 186, 127, 0.1);
+            border-radius: 15px;
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            background: rgba(46, 111, 64, 0.2);
+            border-color: rgba(104, 186, 127, 0.3);
+            box-shadow: 0 10px 30px rgba(46, 111, 64, 0.2);
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to bottom, #2E6F40, #68BA7F);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .skill-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .skill-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            filter: grayscale(30%);
+            opacity: 0.7;
+        }
+
+        .skill-card:hover .skill-icon {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        .skill-percentage {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+             background: linear-gradient(90deg, #2E6F40, #68BA7F);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .skill-name {
+            font-size: 1rem;
+            color: #68BA7F;
+            text-align: center;
+        }
+
+        /* Circular Progress Bar */
+        .progress-circle {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            margin-bottom: 15px;
+        }
+
+        .progress-circle svg {
+            width: 100%;
+            height: 100%;
+            transform: rotate(-90deg);
+        }
+
+        .progress-circle .background-circle {
+            fill: none;
+            stroke: rgba(255, 255, 255, 0.1);
+            stroke-width: 8;
+        }
+
+        .progress-circle .progress {
+            fill: none;
+            stroke: url(#gradient);
+            stroke-width: 8;
+            stroke-linecap: round;
+            stroke-dasharray: 283;
+            transition: stroke-dashoffset 1s ease;
+        }
+
+        /* For animated entrance of skills */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .skill-card {
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+        }
+
+        .skill-card:nth-child(1) { animation-delay: 0.1s; }
+        .skill-card:nth-child(2) { animation-delay: 0.2s; }
+        .skill-card:nth-child(3) { animation-delay: 0.3s; }
+        .skill-card:nth-child(4) { animation-delay: 0.4s; }
+        .skill-card:nth-child(5) { animation-delay: 0.5s; }
+        .skill-card:nth-child(6) { animation-delay: 0.6s; }
+
+        /* Media queries */
+        @media (max-width: 768px) {
+            .skills-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .skill-card {
+                padding: 20px 15px;
+            }
+            
+            .skill-percentage {
+                font-size: 1.5rem;
+            }
+        }
+
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Testimonial Header */
+        .testimonial-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .testimonial-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background-image: linear-gradient(135deg, #68BA7F, #2E6F40);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+
+        .testimonial-subtitle {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .testimonial-grid {
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding: 1rem 0;
+            -ms-overflow-style: none; 
+            scrollbar-width: none;
+        }
+
+        .testimonial-grid::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Testimonial Card */
+        .testimonial-card {
+            min-width: 300px;
+            max-width: 350px;
+            flex: 0 0 auto;
+            display: flex;
+            flex-direction: column;
+            background-color: var(--card-background);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(46, 111, 64, 0.2);
+        }
+
+        .testimonial-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background-image: linear-gradient(to bottom, #68BA7F, #2E6F40);
+        }
+
+        /* Client Logo */
+        .client-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .logo-container {
+            height: 40px;
+            margin-right: 1rem;
+        }
+
+        .logo-container img {
+            height: 100%;
+            width: auto;
+        }
+
+        .company-name {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: var(--heading-color);
+        }
+
+        /* Quote */
+        .quote-icon {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            opacity: 0.7;
+        }
+
+        .testimonial-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        /* Client Info */
+        .client-info {
+            display: flex;
+            align-items: center;
+            margin-top: auto;
+        }
+
+        .client-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 1rem;
+            border: 2px solid var(--accent-color);
+        }
+
+        .client-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .client-details {
+            flex-grow: 1;
+        }
+
+        .client-name {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+            color: var(--heading-color);
+        }
+
+        .client-position {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Navigation Dots */
+        .testimonial-dots {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+            gap: 0.5rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(104, 186, 127, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot:hover {
+            background-color: rgba(104, 186, 127, 0.6);
+        }
+
+        .dot.active {
+            background-color: var(--accent-color);
+            transform: scale(1.3);
+        }
+
+        @media (max-width: 768px) {
+            .testimonial-grid {
+                display: block;
+                overflow-x: hidden;
+            }
+            
+            .testimonial-card {
+                min-width: auto;
+                max-width: none;
+                width: 100%;
+                margin-bottom: 2rem;
+            }
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                gap: 40px;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .stats {
+                flex-wrap: wrap;
+            }
+
+            .stat-box {
+                flex: 0 0 45%;
+            }
+
+            .menu {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+                font-size: 1.5rem;
+                background: none;
+                border: none;
+                color: white;
+                cursor: pointer;
+            }
+
+            .mobile-menu {
+                display: block;
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: rgba(15, 15, 26, 0.95);
+                backdrop-filter: blur(10px);
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: all 0.3s ease;
+                z-index: 99;
+            }
+
+            .mobile-menu.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title {
+                font-size: 2.5rem;
+            }
+
+            .stat-box {
+                flex: 0 0 100%;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+        
+    
+        .contact-container {
+            width: 100%;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        /* Contact Section Layout */
+        .contact-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 7rem;
+        }
+
+        .contact-form-container {
+            background-color: var(--card-background);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(104, 186, 127, 0.1);
+        }
+
+        .contact-heading {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-align: left;
+            background-image: linear-gradient(135deg, #68BA7F, #2E6F40);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+
+        .contact-subheading {
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            max-width: 500px;
+            opacity: 0.9;
+        }
+
+        #contactForm{
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1rem;
+            background-color: var(--input-bg);
+            border: 1px solid var(--secondary-color);
+            border-radius: 8px;
+            color: var(--text-color);
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 2px rgba(46, 111, 64, 0.3);
+        }
+
+        .form-control::placeholder {
+            color: rgba(207, 255, 220, 0.6);
+        }
+
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2368BA7F' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 2.5rem;
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            border: none;
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(46, 111, 64, 0.3);
+        }
+
+        /* Contact Info */
+        .contact-info-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+            
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(z);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-icon i {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+        }
+
+        .contact-info-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-info-label {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-info-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 90px;
+            background-color: var(--background-color);
+            color: #CFFFDC;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(46, 111, 64, 0.3);
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-5px);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .contact-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-form-container {
+                order: 2;
+            }
+            
+            .contact-info-container {
+                order: 1;
+                margin-bottom: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-heading {
+                font-size: 2rem;
+            }
+        }
+
+        footer {
+            color: var(--text-color);
+            padding: 40px 0 20px;
+            text-align: center;
+            width: 100%;
+            bottom: 0;
+            backdrop-filter: blur(8px);
+            z-index: 100;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+            background-color: var(--header-background);
+            transition: var(--transition);
+        }
+
+        .footer-logo {
+            justify-content: center;
+            align-items: center;
+            display: flex;
+             margin-bottom: 30px;
+        }
+
+        .footer-logo img {
+            width: 150px;
+            height: auto;
+        }
+
+        .footer-nav {
+        margin: 20px 0;
+        }
+
+        .footer-nav ul {
+        display: flex;
+        justify-content: center;
+        list-style: none;
+        padding: 0;
+        }
+
+        .footer-nav li {
+        margin: 0 15px;
+        }
+
+        .footer-nav a {
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 500;
+        transition: color 0.3s ease;
+        }
+
+        .footer-nav a:hover {
+        color: #cccccc;
+        }
+
+        .footer-copyright {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.7);
+        margin-top: 20px;
+        }
+
+        .footer-copyright a {
+        color: #ffffff;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        }
+
+        .footer-copyright a:hover {
+        color: #cccccc;
+        }
+
+    
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+        .footer-nav ul {
+            flex-direction: column;
+        }
+        
+        .footer-nav li {
+            margin: 10px 0;
+        }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="background-gradient"></div>
+    <div class="bubbles" id="bubbles"></div>
+
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">
+                <img src="./img/logo-e.png" width="120">
+            </a>
+            <div class="menu">
+                <a href="#services">Services</a>
+                <a href="#works">Works</a>
+                <a href="#hero">Resume</a>
+                <a href="#skills">Skills</a>
+                <a href="#testimonials">Testimonials</a>
+                <a href="#contact">Contact</a>
+                <button class="hire-btn">Hire Me!</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="hero" id="hero">
+            <div class="hero-content">
+                <h3 class="intro">I am StoneLab</h3>
+                <h1 class="title">Next-Level Developer & Graphic Designer.</h1>
+                <p class="subtitle">I break down complex user experience problems to create integrity focussed solutions
+                    that connect billions of people</p>
+
+                <a href="./cv/CURRICULUM VITAE.docx" class="download-btn" download="">
+                    Download CV
+                    <i class="fas fa-download"></i>
+                </a>
+
+                <div class="social-links">
+                    <a href="#" class="social-btn">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-btn">
+                        <i class="fas fa-globe"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/lucas-myalla-86b397277/" target="_blank" class="social-btn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/Mwamyalla" target="_blank" class="social-btn">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-img">
+                <img src="./img/photo.jpg" alt="StoneLab - Web Developer">
+            </div>
+        </section>
+
+        <section class="stats">
+            <div class="stat-box">
+                <h2 class="stat-number">4</h2>
+                <p class="stat-text">Years of Experience</p>
+            </div>
+            <div class="stat-box">
+                <h2 class="stat-number">5+</h2>
+                <p class="stat-text">Projects Completed</p>
+            </div>
+            <div class="stat-box">
+                <h2 class="stat-number">1.5K</h2>
+                <p class="stat-text">Happy Clients</p>
+            </div>
+            <div class="stat-box">
+                <h2 class="stat-number">4</h2>
+                <p class="stat-text">Years of Experience</p>
+            </div>
+        </section>
+
+        <!-- Added sections for menu links -->
+        <section class="services-section" id="services">
+            <div class="services-container">
+                <div class="services-heading">
+                    <h2 class="services-title">My Quality Services</h2>
+                    <p class="services-subtitle">We put your ideas and thus your wishes in the form of a unique web project that
+                        inspires you and your customers.</p>
+                </div>
+        
+                <div class="services-showcase">
+                    <!-- Service Item 1 -->
+                    <div class="service-item">
+                        <div class="service-item-inner">
+                            <div class="service-item-left">
+                                <div class="service-item-number">01</div>
+                                <div class="service-item-content">
+                                    <h3>Web Development</h3>
+                                    <p>Ensure your website looks great on any device with layouts that adapt to different screen
+                                        sizes seamlessly.</p>
+                                </div>
+                            </div>
+                            <div class="service-item-arrow">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    stroke="#CFFFDC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <!-- Service Item 2 -->
+                    <div class="service-item">
+                        <div class="service-item-inner">
+                            <div class="service-item-left">
+                                <div class="service-item-number">02</div>
+                                <div class="service-item-content">
+                                    <h3>UI/UX Design</h3>
+                                    <p>Set up user-friendly CMS solutions like WordPress or custom-built options so clients can
+                                        manage content easily.</p>
+                                </div>
+                            </div>
+                            <div class="service-item-arrow">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    stroke="#CFFFDC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <!-- Service Item 3 -->
+                    <div class="service-item">
+                        <div class="service-item-inner">
+                            <div class="service-item-left">
+                                <div class="service-item-number">03</div>
+                                <div class="service-item-content">
+                                    <h3>Content Writing</h3>
+                                    <p>Build and integrate APIs to connect websites with third-party applications, enhancing
+                                        functionality and performance.</p>
+                                </div>
+                            </div>
+                            <div class="service-item-arrow">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    stroke="#CFFFDC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <!-- Service Item 4 -->
+                    <div class="service-item">
+                        <div class="service-item-inner">
+                            <div class="service-item-left">
+                                <div class="service-item-number">04</div>
+                                <div class="service-item-content">
+                                    <h3>Digital Marketing</h3>
+                                    <p>Refresh outdated websites with modern, appealing designs that align with current brand
+                                        goals and user expectations.</p>
+                                </div>
+                            </div>
+                            <div class="service-item-arrow">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    stroke="#CFFFDC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="works-section" id="works">
+            <div class="works-container">
+                <div class="works-heading">
+                    <h2 class="works-title">My Recent Works</h2>
+                    <p class="works-subtitle">We put your ideas and thus your wishes in the form of a unique web project that
+                        inspires you and your customers.</p>
+                </div>
+        
+                <div class="works-filter">
+                    <button class="filter-btn active">All</button>
+                    <button class="filter-btn">UX/UI</button>
+                    <button class="filter-btn">Web Development</button>
+                    <button class="filter-btn">Branding</button>
+                    <button class="filter-btn">Design</button>
+                </div>
+        
+                <div class="works-grid">
+                    <!-- Work Item 1 -->
+                    <div class="work-card">
+                        <img src="./works/auto365africa.png" alt="Deloitte Project" class="work-image">
+                        <div class="work-overlay">
+                            <span class="work-category">Web Development</span>
+                            <h3 class="work-title">Auto365Africa</h3>
+                            <p class="work-description">Full Stack Software</p>
+                            <a href="#" class="work-link">
+                                View Project
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                    stroke="#CFFFDC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+        
+                    <!-- Work Item 2 -->
+                    <div class="work-card">
+                        <img src="./works/stonelab.png" alt="StoneLab Logo" class="work-image">
+                        <div class="work-overlay">
+                            <span class="work-category">Design</span>
+                            <h3 class="work-title">StoneLab Logo</h3>
+                            <p class="work-description">Logo Design</p>
+                            <a href="#" class="work-link">
+                                View Project
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                    stroke="#CFFFDC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+        
+                    <!-- Work Item 3 -->
+                    <div class="work-card">
+                        <img src="./works/stonemart.png" alt="E-commerce Platform" class="work-image">
+                        <div class="work-overlay">
+                            <span class="work-category">Web Development</span>
+                            <h3 class="work-title">Modern E-commerce Platform</h3>
+                            <p class="work-description">A fully responsive e-commerce solution with advanced filtering and
+                                seamless checkout experience.</p>
+                            <a href="#" class="work-link">
+                                View Project
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                    stroke="#CFFFDC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+        
+                    <!-- Work Item 4 -->
+                    <div class="work-card">
+                        <img src="./works/stonemart-logo.png" alt="Stonemart logo" class="work-image">
+                        <div class="work-overlay">
+                            <span class="work-category">Design</span>
+                            <h3 class="work-title">Stonemart Logo Design</h3>
+                            <p class="work-description">Logo Design</p>
+                            <a href="#" class="work-link">
+                                View Project
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                    stroke="#CFFFDC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="work-card">
+                        <img src="./works/poster1.png" alt="Branding Project" class="work-image">
+                        <div class="work-overlay">
+                            <span class="work-category">Branding</span>
+                            <h3 class="work-title">UK Beauty Products</h3>
+                            <p class="work-description">Uk Beauty Products branding</p>
+                            <a href="#" class="work-link">
+                                View Project
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                    stroke="#CFFFDC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="work-card">
+                        <img src="./works/poster-2.png" alt="Branding Project" class="work-image">
+                        <div class="work-overlay">
+                            <span class="work-category">Branding</span>
+                            <h3 class="work-title">UK Beauty Products</h3>
+                            <p class="work-description">Uk Beauty Products branding</p>
+                            <a href="#" class="work-link">
+                                View Project
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                    stroke="#CFFFDC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <svg width="0" height="0" style="position: absolute;">
+            <defs>
+                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#CFFFDC" />
+                    <stop offset="100%" stop-color="#6a3aff" />
+                </linearGradient>
+            </defs>
+        </svg>
+        
+        <!-- HTML for Skills Section -->
+        <section class="skills-section" id="skills">
+            <div class="skills-container">
+                <div class="skills-heading">
+                    <h2 class="skills-title">My Skills</h2>
+                    <p class="skills-subtitle">We put your ideas and thus your wishes in the form of a unique web project that
+                        inspires you and your customers.</p>
+                </div>
+        
+                <div class="skills-grid">
+                    <!-- Skill Card: Python -->
+                    <div class="skill-card">
+                        <img src="./img/python-5.svg" alt="Python" class="skill-icon">
+                        <div class="skill-percentage">92%</div>
+                        <div class="skill-name">Python</div>
+                    </div>
+                    <!-- Skill Card: Django -->
+                    <div class="skill-card">
+                        <img src="./img/django-community.svg" alt="Django" class="skill-icon">
+                        <div class="skill-percentage">92%</div>
+                        <div class="skill-name">Django</div>
+                    </div>
+
+                    <!-- Skill Card: CodeIgniter -->
+                    <div class="skill-card">
+                        <img src="./img/codeigniter.svg" alt="CodeIgniter" class="skill-icon">
+                        <div class="skill-percentage">80%</div>
+                        <div class="skill-name">CodeIgniter</div>
+                    </div>
+
+                    <!-- Skill Card: HTML -->
+                    <div class="skill-card">
+                        <img src="./img/html-1.svg" alt="HTML" class="skill-icon">
+                        <div class="skill-percentage">80%</div>
+                        <div class="skill-name">HTML</div>
+                    </div>
+
+        
+                    <!-- Skill Card: CSS -->
+                    <div class="skill-card">
+                        <img src="./img/css-3.svg" alt="CSS" class="skill-icon">
+                        <div class="skill-percentage">85%</div>
+                        <div class="skill-name">CSS</div>
+                    </div>
+        
+                    <!-- Skill Card: JavaScript -->
+                    <div class="skill-card">
+                        <img src="./img/javascript-2.svg" alt="JavaScript" class="skill-icon">
+                        <div class="skill-percentage">99%</div>
+                        <div class="skill-name">JavaScript</div>
+                    </div>
+        
+                    <!-- Skill Card: Adobe Illustrator -->
+                    <div class="skill-card">
+                        <img src="./img/adobe-illustrator-cc-3.svg" alt="Adobe Illustrator" class="skill-icon">
+                        <div class="skill-percentage">89%</div>
+                        <div class="skill-name">Adobe Illustrator</div>
+                    </div>
+        
+                    <!-- Skill Card: Adobe Photoshop -->
+                    <div class="skill-card">
+                        <img src="./img/adobe-photoshop-2.svg" alt="Adobe Photoshop" class="skill-icon">
+                        <div class="skill-percentage">93%</div>
+                        <div class="skill-name">Adobe Photoshop</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials-container" id="testimonials">
+            <div class="testimonial-header">
+                <h2 class="testimonial-title">My Client's Stories</h2>
+                <p class="testimonial-subtitle">Empowering people in new a digital journey with my super services</p>
+            </div>
+        
+            <div class="testimonial-grid">
+                <!-- Testimonial Card 1 -->
+                <div class="testimonial-card">
+                    <div class="client-logo">
+                        <div class="logo-container">
+                            <img src="./img/images.png" alt="N Company Logo">
+                        </div>
+                        <span class="company-name">N COMPANY</span>
+                    </div>
+        
+                    <div class="quote-icon">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+        
+                    <p class="testimonial-text">
+                        "StoneLab is a professional Designer he really helps my business by providing value to my business."
+                    </p>
+        
+                    <div class="client-info">
+                        <div class="client-image">
+                            <img src="./img/photo.jpg" alt="Brandon Fraser">
+                        </div>
+                        <div class="client-details">
+                            <h4 class="client-name">Brandon Fraser</h4>
+                            <p class="client-position">Senior Software Dev, Cosmic Sport</p>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Testimonial Card 2 -->
+                <div class="testimonial-card">
+                    <div class="client-logo">
+                        <div class="logo-container">
+                            <img src="./img/images.png" alt="Cosmic Sports Logo">
+                        </div>
+                        <span class="company-name">COSMIC SPORTS</span>
+                    </div>
+        
+                    <div class="quote-icon">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+        
+                    <p class="testimonial-text">
+                        "StoneLab is a professional Designer he really helps my business by providing value to my business."
+                    </p>
+        
+                    <div class="client-info">
+                        <div class="client-image">
+                            <img src="./img/photo.jpg" alt="Tim Bailey">
+                        </div>
+                        <div class="client-details">
+                            <h4 class="client-name">Tim Bailey</h4>
+                            <p class="client-position">SEO Specialist, Theme Junction</p>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Testimonial Card 3 -->
+                <div class="testimonial-card">
+                    <div class="client-logo">
+                        <div class="logo-container">
+                            <img src="./img/images.png" alt="Theme Junction Logo">
+                        </div>
+                        <span class="company-name">THEME JUNCTION</span>
+                    </div>
+        
+                    <div class="quote-icon">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+        
+                    <p class="testimonial-text">
+                        "Working with StoneLab transformed our digital presence. His designs are not just beautiful but
+                        strategically thought out."
+                    </p>
+        
+                    <div class="client-info">
+                        <div class="client-image">
+                            <img src="./img/photo.jpg" alt="Sarah Johnson">
+                        </div>
+                        <div class="client-details">
+                            <h4 class="client-name">Sarah Johnson</h4>
+                            <p class="client-position">Marketing Director, Theme Junction</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Navigation Dots -->
+            <div class="testimonial-dots">
+                <div class="dot active"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </section>
+
+        <section class="contact-container" id="contact">
+            <div class="contact-section">
+                <!-- Contact Form -->
+                <div class="contact-form-container">
+                    <h2 class="contact-heading">Let's work together!</h2>
+                    <p class="contact-subheading">I design and code beautifully simple things and I love what I do. Just simple like
+                        that!</p>
+            
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="First name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Last name" required>
+                            </div>
+                        </div>
+            
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Email address" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" class="form-control" placeholder="Phone number">
+                            </div>
+                        </div>
+            
+                        <div class="form-group">
+                            <select class="form-control" required>
+                                <option value="" disabled selected>Select an option</option>
+                                <option value="website">Website Design</option>
+                                <option value="branding">Branding</option>
+                                <option value="development">Web Development</option>
+                                <option value="consultation">Consultation</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+            
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="Message" rows="5" required></textarea>
+                        </div>
+            
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            
+                <!-- Contact Info -->
+                <div class="contact-info-container">
+                    <!-- Phone -->
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-info-content">
+                            <span class="contact-info-label">Phone</span>
+                            <span class="contact-info-value">+01 123 654 8096</span>
+                        </div>
+                    </div>
+            
+                    <!-- Email -->
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-info-content">
+                            <span class="contact-info-label">Email</span>
+                            <span class="contact-info-value">gerolddesign@mail.com</span>
+                        </div>
+                    </div>
+            
+                    <!-- Address -->
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-info-content">
+                            <span class="contact-info-label">Address</span>
+                            <span class="contact-info-value">Warne Park Street Pine,</span>
+                            <span class="contact-info-value">FL 33157, New York</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <!-- Footer Logo -->
+            <div class="footer-logo">
+                <a href="#" class="logo">
+                    <img src="./img/logo-e.png" width="150">
+                </a>
+            </div>
+    
+            <!-- Footer Navigation -->
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="#hero">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#hero">Resume</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+    
+            <!-- Copyright Information -->
+            <div class="footer-copyright">
+                <p>© 2025 All rights reserved by <a href="#">StoneLab</a></p>
+            </div>
+        </div>
+    
+        <!-- Back to Top Button -->
+        <a href="#" class="back-to-top">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 15l-6-6-6 6" />
+            </svg>
+        </a>
+    </footer>
+    <div class="theme-toggle">
+        <i class="fas fa-sun"></i>
+    </div>
+
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Theme toggle functionality
+            const themeToggle = document.querySelector('.theme-toggle');
+            let isDarkMode = true;
+
+            // Define theme colors
+            const darkTheme = {
+                background: '#253D2C',
+                headerBackground: 'rgba(37, 61, 44, 0.9)',
+                text: '#CFFFDC',
+                headingText: '#68BA7F',
+                accent: '#2E6F40',
+                secondary: '#68BA7F',
+                cardBackground: 'rgba(37, 61, 44, 0.5)',
+                borderColor: 'rgba(104, 186, 127, 0.1)'
+            };
+
+            const lightTheme = {
+                background: '#68BA7F',
+                headerBackground: 'rgba(46, 111, 64, 0.9)',
+                text: '#253D2C',
+                headingText: '#253D2C',
+                accent: '#2E6F40',
+                secondary: '#253D2C',
+                cardBackground: 'rgba(207, 255, 220, 0.5)',
+                borderColor: 'rgba(46, 111, 64, 0.1)'
+            };
+
+            // Apply the current theme
+            function applyTheme(theme) {
+                document.body.style.backgroundColor = theme.background;
+                document.body.style.color = theme.text;
+
+                // Update header
+                const header = document.querySelector('header');
+                if (header) header.style.backgroundColor = theme.headerBackground;
+
+                // Update menu items
+                const menuItems = document.querySelectorAll('.menu a');
+                menuItems.forEach(item => {
+                    item.style.color = theme.text;
+                });
+
+                // Update headings
+                const headings = document.querySelectorAll('.title, .section-title, h1, h2, h3');
+                headings.forEach(heading => {
+                    heading.style.color = theme.headingText;
+                    heading.classList.add('gradient-text');
+                });
+
+                // Update buttons
+                const buttons = document.querySelectorAll('.hire-btn');
+                buttons.forEach(btn => {
+                    btn.style.backgroundColor = theme.accent;
+                    btn.style.color = isDarkMode ? '#CFFFDC' : '#CFFFDC';
+                });
+
+                // Update download button
+                const downloadBtn = document.querySelector('.download-btn');
+                if (downloadBtn) {
+                    downloadBtn.style.color = theme.secondary;
+                    downloadBtn.style.borderColor = theme.secondary;
+                }
+
+                // Update cards
+                const cards = document.querySelectorAll('.service-card, .skill-card, .work-card');
+                cards.forEach(card => {
+                    card.style.backgroundColor = theme.cardBackground;
+                    card.style.borderColor = theme.borderColor;
+                });
+
+                // Update theme toggle icon
+                const themeIcon = document.querySelector('.theme-toggle i');
+                if (themeIcon) {
+                    themeIcon.className = isDarkMode ? 'fas fa-sun' : 'fas fa-moon';
+                }
+            }
+
+            // Toggle between themes
+     
+            themeToggle.addEventListener('click', () => {
+                isDarkMode = !isDarkMode;
+
+                if (isDarkMode) {
+                    applyTheme(darkTheme);
+                } else {
+                    applyTheme(lightTheme);
+                }
+            });
+            
+
+        // Animation for the stats counters
+        const statNumbers = document.querySelectorAll('.stat-number');
+
+        const animateValue = (element, start, end, duration) => {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                let value = Math.floor(progress * (end - start) + start);
+
+                // Handle special cases like 1.5K
+                if (element.textContent.includes('K')) {
+                    let baseValue = parseFloat(element.textContent);
+                    element.textContent = (progress * baseValue).toFixed(1) + 'K';
+                } else if (element.textContent.includes('+')) {
+                    element.textContent = value + '+';
+                } else {
+                    element.textContent = value;
+                }
+
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        };
+
+        // Observer for animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    statNumbers.forEach(stat => {
+                        let targetValue;
+                        if (stat.textContent.includes('K')) {
+                            targetValue = parseFloat(stat.textContent) * 1000;
+                        } else if (stat.textContent.includes('+')) {
+                            targetValue = parseInt(stat.textContent);
+                        } else {
+                            targetValue = parseInt(stat.textContent);
+                        }
+                        animateValue(stat, 0, targetValue, 1500);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        observer.observe(document.querySelector('.stats'));
+
+        // Create bubbles
+        const bubblesContainer = document.getElementById('bubbles');
+
+        function createBubbles() {
+            const bubbleCount = 15;
+
+            for (let i = 0; i < bubbleCount; i++) {
+                const bubble = document.createElement('div');
+                bubble.classList.add('bubble');
+
+                // Random properties
+                const size = Math.random() * 100 + 60; // 60-160px
+                const left = Math.random() * 100; // 0-100%
+                const delay = Math.random() * 8; // 0-8s delay
+                const duration = Math.random() * 8 + 8; // 8-16s duration
+
+                bubble.style.width = `${size}px`;
+                bubble.style.height = `${size}px`;
+                bubble.style.left = `${left}%`;
+                bubble.style.animationDelay = `${delay}s`;
+                bubble.style.animationDuration = `${duration}s`;
+
+                bubblesContainer.appendChild(bubble);
+            }
+        }
+
+        createBubbles();
+
+        // Scroll and menu handling
+        const sections = document.querySelectorAll('section');
+        const menuLinks = document.querySelectorAll('.menu a');
+
+        function setActiveLink() {
+            let currentSection = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
+
+                if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                    currentSection = sectionId;
+                }
+            });
+
+            menuLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSection}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', setActiveLink);
+
+        // Smooth scroll for navigation links
+        menuLinks.forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+
+                window.scrollTo({
+                    top: targetSection.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+
+                // Update active link
+                menuLinks.forEach(link => link.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const workCards = document.querySelectorAll('.work-card');
+
+            // Initialize Isotope-like filtering functionality
+            function filterWorks(category) {
+                workCards.forEach(card => {
+                    // Get category from the work card
+                    const cardCategory = card.querySelector('.work-category').textContent;
+
+                    // If "All" is selected or card category matches selected filter
+                    if (category === 'All' || cardCategory.includes(category)) {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 10);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300); // Match this to your CSS transition time
+                    }
+                });
+            }
+
+            // Add data-category attributes to all work cards for easier filtering
+            workCards.forEach(card => {
+                const category = card.querySelector('.work-category').textContent;
+                card.setAttribute('data-category', category);
+            });
+
+            // Event listeners for filter buttons
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+
+                    // Add active class to clicked button
+                    this.classList.add('active');
+
+                    // Get selected category and filter works
+                    const selectedCategory = this.textContent;
+                    filterWorks(selectedCategory);
+
+                    // Optional: Add animation to the grid container for smoother transitions
+                    const worksGrid = document.querySelector('.works-grid');
+                    worksGrid.classList.add('filtering');
+                    setTimeout(() => {
+                        worksGrid.classList.remove('filtering');
+                    }, 400);
+                });
+            });
+
+            // Initialize with "All" category active
+            filterWorks('All');
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Function to check if element is in viewport
+            function isInViewport(element) {
+                const rect = element.getBoundingClientRect();
+                return (
+                    rect.top >= 0 &&
+                    rect.left >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                );
+            }
+
+            // Optional: Add scroll-based animation for skill cards
+            const skillCards = document.querySelectorAll('.skill-card');
+
+            function checkSkills() {
+                skillCards.forEach(card => {
+                    if (isInViewport(card) && !card.classList.contains('animated')) {
+                        card.classList.add('animated');
+                        // If you want to add additional animations when scrolled into view
+                    }
+                });
+            }
+
+            // Initial check
+            checkSkills();
+
+            // Check on scroll
+            window.addEventListener('scroll', checkSkills);
+        });
+
+        // Add this JavaScript to make the dots functional
+
+            // Get all testimonial cards and dots
+            const testimonialCards = document.querySelectorAll('.testimonial-card');
+            const dots = document.querySelectorAll('.dot');
+
+            // Hide all testimonials except the first one initially
+            // (Only if you want to show one testimonial at a time in mobile view)
+            function initializeTestimonials() {
+                if (window.innerWidth <= 768) {
+                    testimonialCards.forEach((card, index) => {
+                        if (index !== 0) {
+                            card.style.display = 'none';
+                        }
+                    });
+                } else {
+                    // Show all cards on desktop
+                    testimonialCards.forEach(card => {
+                        card.style.display = 'flex';
+                    });
+                }
+            }
+
+            // Handle dot click
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    // Update active dot
+                    dots.forEach(d => d.classList.remove('active'));
+                    dot.classList.add('active');
+
+                    if (window.innerWidth <= 768) {
+                        // On mobile, show only the selected testimonial
+                        testimonialCards.forEach((card, cardIndex) => {
+                            if (cardIndex === index) {
+                                card.style.display = 'flex';
+                                card.style.opacity = '0';
+                                // Fade in animation
+                                setTimeout(() => {
+                                    card.style.transition = 'opacity 0.5s ease';
+                                    card.style.opacity = '1';
+                                }, 10);
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        });
+                    } else {
+                        // On desktop, scroll to the testimonial smoothly
+                        const testimonialGrid = document.querySelector('.testimonial-grid');
+                        const cardWidth = testimonialCards[0].offsetWidth;
+                        const gap = 32; // This should match your grid gap (2rem = 32px)
+
+                        // Calculate scroll position
+                        const scrollPos = index * (cardWidth + gap);
+
+                        // Apply smooth scroll
+                        testimonialGrid.scrollTo({
+                            left: scrollPos,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Handle window resize
+            window.addEventListener('resize', () => {
+                // Reset display of cards based on screen size
+                if (window.innerWidth <= 768) {
+                    // Find active dot
+                    const activeDotIndex = Array.from(dots).findIndex(dot => dot.classList.contains('active'));
+
+                    // Show only the active testimonial
+                    testimonialCards.forEach((card, index) => {
+                        card.style.display = index === activeDotIndex ? 'flex' : 'none';
+                    });
+                } else {
+                    // Show all cards on desktop
+                    testimonialCards.forEach(card => {
+                        card.style.display = 'flex';
+                    });
+                }
+            });
+
+            // Initialize testimonials
+            initializeTestimonials();
+
+            // Make the testimonial-grid scrollable on desktop
+            const testimonialGrid = document.querySelector('.testimonial-grid');
+            testimonialGrid.style.overflowX = 'auto';
+            testimonialGrid.style.scrollBehavior = 'smooth';
+            testimonialGrid.style.display = 'flex';
+            testimonialGrid.style.gap = '2rem';
+            testimonialGrid.style.padding = '1rem 0';
+            testimonialGrid.style.scrollbarWidth = 'none';  // Hide scrollbar in Firefox
+            testimonialGrid.style.msOverflowStyle = 'none';  // Hide scrollbar in IE/Edge
+
+            // Hide the scrollbar in webkit browsers
+            testimonialGrid.style.cssText += `
+            &::-webkit-scrollbar {
+                display: none;
+            }
+            `;
+
+            // Make cards fixed width on desktop
+            testimonialCards.forEach(card => {
+                card.style.minWidth = '300px';
+                card.style.maxWidth = '350px';
+            });
+    </script>
+</body>
+
+</html>
